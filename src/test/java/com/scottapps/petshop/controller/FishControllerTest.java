@@ -1,6 +1,6 @@
 package com.scottapps.petshop.controller;
 
-import com.scottapps.petshop.model.FishRequest;
+import com.scottapps.petshop.model.domain.fish.FishRequest;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +19,7 @@ public class FishControllerTest {
                 .then()
                 .statusCode(200)
                 .and()
-                .body("type", is("FishRequest"))
-                .body("test", is("Works!"));
+                .body("request.type", is("FishRequest"))
+                .body("request.test", is("Works!"));
     }
 }

@@ -1,6 +1,6 @@
 package com.scottapps.petshop.response;
 
-import com.scottapps.petshop.model.FishRequest;
+import com.scottapps.petshop.model.domain.fish.FishRequest;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Response;
