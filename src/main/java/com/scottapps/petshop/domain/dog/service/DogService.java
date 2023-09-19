@@ -3,6 +3,7 @@ package com.scottapps.petshop.domain.dog.service;
 import com.scottapps.petshop.model.domain.dog.DogRequest;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import javax.ws.rs.core.Response;
 import java.util.Random;
 import java.util.function.Function;

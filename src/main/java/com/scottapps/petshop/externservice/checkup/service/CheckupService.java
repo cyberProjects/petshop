@@ -44,8 +44,9 @@ public class CheckupService {
     public CheckupResponse apply(CheckupRequest request) {
         log.info("Calling Checkup API.");
         var response = restClient.getCheckup(request);
-        log.info("Unreachable code on a failure!");
-        log.info("Fallback handler will return a CheckupResponse object.");
+        log.info("200 OK returned from External Checkup API! Woohoo!");
+        log.info("If any other HTTP status code is returned then see the configured fallback handler.");
+        log.info("But now we have to work with a Response object. Should we do it here?");
         return response.readEntity(CheckupResponse.class);
     }
 }
