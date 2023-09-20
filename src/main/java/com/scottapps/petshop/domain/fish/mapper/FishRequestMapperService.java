@@ -12,14 +12,17 @@ import java.util.Optional;
 @ApplicationScoped
 public class FishRequestMapperService {
     @Inject
+    private FishRequestToCheckupRequest checkupRequestMapper;
+
+    @Inject
     private FishRequestToFeedRequest feedRequestMapper;
 
     public FeedRequest toFeedRequest(FishContext request) {
         return feedRequestMapper.apply(request);
     }
 
-    public CheckupRequest toCheckupRequest(FishContext request) {
-        return new CheckupRequest();
+    public Optional<CheckupRequest> toCheckupRequest(FishContext request) {
+        return checkupRequestMapper.apply(request);
     }
 
     public CleanRequest toCleanRequest(FishContext request) {

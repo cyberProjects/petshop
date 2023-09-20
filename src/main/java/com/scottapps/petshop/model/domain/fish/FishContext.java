@@ -1,17 +1,16 @@
 package com.scottapps.petshop.model.domain.fish;
 
 import com.scottapps.petshop.framework.PetShopContext;
-import com.scottapps.petshop.model.domain.fish.FishRequest;
 
 import javax.enterprise.context.RequestScoped;
 import java.util.UUID;
 
 @RequestScoped
-public class FishContext implements PetShopContext<FishRequest, String, String> {
-    private String id = UUID.randomUUID().toString();
+public class FishContext implements PetShopContext<FishRequest, FishResponse, String> {
+    private final String id = UUID.randomUUID().toString();
     private FishRequest request;
-    private String data;
-    private String response;
+    private FishResponse response;
+    private String dataStore;
 
     public String getId() {
         return id;
@@ -29,24 +28,24 @@ public class FishContext implements PetShopContext<FishRequest, String, String> 
     }
 
     @Override
-    public String getData() {
-        return data;
-    }
-
-    @Override
-    public PetShopContext setData(String data) {
-        this.data = data;
-        return this;
-    }
-
-    @Override
-    public String getResponse() {
+    public FishResponse getResponse() {
         return response;
     }
 
     @Override
-    public PetShopContext setResponse(String response) {
+    public PetShopContext setResponse(FishResponse response) {
         this.response = response;
+        return this;
+    }
+
+    @Override
+    public String getDataStore() {
+        return dataStore;
+    }
+
+    @Override
+    public PetShopContext setDataStore(String data) {
+        this.dataStore = data;
         return this;
     }
 
@@ -55,8 +54,8 @@ public class FishContext implements PetShopContext<FishRequest, String, String> 
         return "FishContext{" +
                 "id='" + id + '\'' +
                 ", request=" + request +
-                ", data='" + data + '\'' +
-                ", response='" + response + '\'' +
+                ", response=" + response +
+                ", dataStore='" + dataStore + '\'' +
                 '}';
     }
 }

@@ -1,13 +1,13 @@
 package com.scottapps.petshop.domain.fish.controller;
 
+import com.scottapps.petshop.domain.fish.service.FishService;
 import com.scottapps.petshop.model.domain.fish.FishContext;
 import com.scottapps.petshop.model.domain.fish.FishRequest;
-import com.scottapps.petshop.domain.fish.service.FishService;
 import org.jboss.logging.Logger;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -20,6 +20,7 @@ public class FishController {
     Logger log;
 
     @Inject
+    @RequestScoped
     private FishContext context;
 
     @Inject
@@ -28,17 +29,10 @@ public class FishController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response post(@Valid FishRequest request) {
+        log.info("Received FishRequest!");
         context.setRequest(request);
-        log.info("HIII");
-        System.out.println(context);
-        return service.apply(context);
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response get() {
-        log.info("HIII");
-        context.setRequest(new FishRequest());
-        return service.apply(context);
+        var res = service.apply(context);
+        log.info(context);
+        return res;
     }
 }

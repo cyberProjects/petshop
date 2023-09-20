@@ -1,6 +1,6 @@
 package com.scottapps.petshop.externservice.checkup.service;
 
-import com.scottapps.petshop.model.externservice.checkup.CheckupResponse;
+import com.scottapps.petshop.model.externservice.checkup.CheckupServiceResponse;
 import org.eclipse.microprofile.faulttolerance.ExecutionContext;
 import org.eclipse.microprofile.faulttolerance.FallbackHandler;
 import org.jboss.logging.Logger;
@@ -8,14 +8,17 @@ import org.jboss.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+/**
+ * Catches and handles exceptions thrown by CheckupService.
+ */
 @ApplicationScoped
-public class CheckupServiceFallbackHandler implements FallbackHandler<CheckupResponse> {
+public class CheckupServiceFallbackHandler implements FallbackHandler<CheckupServiceResponse> {
     @Inject
     Logger log;
 
     @Override
-    public CheckupResponse handle(ExecutionContext executionContext) {
+    public CheckupServiceResponse handle(ExecutionContext executionContext) {
         log.errorv("Handling CheckupService Exception: {0}", executionContext.getFailure());
-        return new CheckupResponse(executionContext.getFailure());
+        return new CheckupServiceResponse(executionContext.getFailure());
     }
 }

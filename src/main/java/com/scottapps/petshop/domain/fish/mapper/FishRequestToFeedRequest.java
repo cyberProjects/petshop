@@ -8,7 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class FishRequestToFeedRequest {
     public FeedRequest apply(FishContext fishRequest) {
-        fishRequest.getRequest().setTest("Works!");
+        fishRequest.getRequest().setMessage("Works!");
         return new FeedRequest();
     }
 }

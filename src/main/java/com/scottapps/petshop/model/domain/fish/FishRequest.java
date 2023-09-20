@@ -3,28 +3,28 @@ package com.scottapps.petshop.model.domain.fish;
 import javax.validation.constraints.NotNull;
 
 public class FishRequest {
-    private final String type = "FishRequest";
-
     @NotNull
-    private String test;
+    private String message;
 
-    public String getType() {
-        return type;
+    public FishRequest() {
     }
 
-    public String getTest() {
-        return test;
+    public FishRequest(String message) {
+        this.message = message;
     }
 
-    public void setTest(String test) {
-        this.test = test;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
     public String toString() {
         return "FishRequest{" +
-                "type='" + type + '\'' +
-                ", test='" + test + '\'' +
+                "message='" + message + '\'' +
                 '}';
     }
 }
