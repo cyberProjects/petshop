@@ -1,6 +1,6 @@
 package com.scottapps.petshop.controller;
 
-import com.scottapps.petshop.model.domain.fish.FishRequest;
+import com.scottapps.petshop.domain.fish.FishRequestDto;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ public class FishControllerTest {
     @Test
     public void testPost() {
         given()
-                .body(new FishRequest("FishControllerTest"))
+                .body(new FishRequestDto("FishControllerTest"))
                 .header("Content-Type", "application/json")
                 .when()
                 .post("/fish")

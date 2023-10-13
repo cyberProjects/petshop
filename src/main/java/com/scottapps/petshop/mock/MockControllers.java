@@ -1,7 +1,7 @@
 package com.scottapps.petshop.mock;
 
-import com.scottapps.petshop.model.externservice.checkup.CheckupRequest;
-import com.scottapps.petshop.model.externservice.checkup.CheckupResponse;
+import com.scottapps.petshop.externservice.checkup.CheckupRequest;
+import com.scottapps.petshop.externservice.checkup.CheckupResponse;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
