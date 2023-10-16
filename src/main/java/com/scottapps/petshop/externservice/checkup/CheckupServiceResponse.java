@@ -38,6 +38,14 @@ public class CheckupServiceResponse {
         this.throwable = throwable;
     }
 
+    public CheckupRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(CheckupRequest request) {
+        this.request = request;
+    }
+
     public CheckupResponse getResponse() {
         return response;
     }
