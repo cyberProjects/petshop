@@ -12,7 +12,7 @@ public class FishOrchestrationService {
     Logger log;
 
     @Inject
-    FishServiceTemplate1 strategy1;
+    FishServiceStrategy1 strategy;
 
     /**
      * Add @Fallback.
@@ -21,6 +21,6 @@ public class FishOrchestrationService {
      * @return
      */
     public Response orchestrate(FishRequestDto request) {
-        return strategy1.apply(request);
+        return strategy.apply(request);
     }
 }
