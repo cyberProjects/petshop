@@ -40,7 +40,7 @@ public class FishController {
     public Response post(@Valid FishRequestDto request) {
         log.info("Received new FishRequest!");
         var appRequest = new FishRequest(UUID.randomUUID().toString(), request, new FishData());
-        transactionService.persist(new Transaction());
+        transactionService.persist(new Transaction(appRequest.getAppId()));
         var violations = orchestrationService.validate(request);
         if (violations.isEmpty()) {
             var response = orchestrationService.orchestrate(appRequest);

@@ -4,9 +4,11 @@ import com.scottapps.petshop.framework.Notification;
 import com.scottapps.petshop.framework.NotificationService;
 import org.jboss.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.io.IOException;
 
+@ApplicationScoped
 public class AppNotificationService implements NotificationService {
     @Inject
     Logger log;
