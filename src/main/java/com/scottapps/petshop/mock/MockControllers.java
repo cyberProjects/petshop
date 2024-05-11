@@ -1,7 +1,8 @@
 package com.scottapps.petshop.mock;
 
-import com.scottapps.petshop.externservice.checkup.CheckupRequest;
-import com.scottapps.petshop.externservice.checkup.CheckupResponse;
+import com.scottapps.petshop.externalapi.checkup.CheckupRequest;
+import com.scottapps.petshop.externalapi.checkup.CheckupRequest2;
+import com.scottapps.petshop.externalapi.checkup.CheckupResponse;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
@@ -19,8 +20,10 @@ public class MockControllers {
     @POST
     @Path("/checkup")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response post(CheckupRequest request) {
-        log.info("Mock Checkup API Called! Sending Ok!");
+    public Response post(CheckupRequest2 request) throws InterruptedException {
+        log.info("Mock Checkup API Called! Waiting.");
+        Thread.sleep(4000);
+        log.info("Sending response.");
         return Response.ok(new CheckupResponse()).build();
     }
 
