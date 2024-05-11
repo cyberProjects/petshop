@@ -3,7 +3,7 @@ package com.scottapps.petshop.fish.service.externalapi.checkup;
 import com.scottapps.petshop.commons.service.externalapi.checkup.CheckupService;
 import com.scottapps.petshop.commons.exception.ExternalApiException;
 import com.scottapps.petshop.commons.model.externalapi.checkup.CheckupServiceResponse;
-import com.scottapps.petshop.fish.model.FishContext;
+import com.scottapps.petshop.fish.model.FishRequest;
 import com.scottapps.petshop.fish.mapper.FishRequestToCheckupRequest;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -17,7 +17,7 @@ public class FishCheckupService {
     @Inject
     private CheckupService checkupService;
 
-    public CheckupServiceResponse callCheckupService(FishContext request) {
+    public CheckupServiceResponse callCheckupService(FishRequest request) {
         var checkupReqOptional = mapper.toCheckupRequest(request);
         if (checkupReqOptional.isPresent()) {
             var checkupRequest = checkupReqOptional.get();
