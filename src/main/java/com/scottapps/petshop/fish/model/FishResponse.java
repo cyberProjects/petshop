@@ -1,19 +1,20 @@
 package com.scottapps.petshop.fish.model;
 
 public class FishResponse {
-    private String id = "";
+    private final Integer statusCode;
 
-    public FishResponse() {
+    public FishResponse(Integer statusCode) {
+        this.statusCode = statusCode;
     }
 
-    public String getId() {
-        return id;
+    public Integer getStatusCode() {
+        return statusCode;
     }
 
     @Override
     public String toString() {
         return "FishResponse{" +
-                "id='" + id + '\'' +
+                "statusCode=" + statusCode +
                 '}';
     }
 }

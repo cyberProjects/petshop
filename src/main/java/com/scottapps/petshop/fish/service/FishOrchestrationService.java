@@ -1,13 +1,14 @@
 package com.scottapps.petshop.fish.service;
 
-import com.scottapps.petshop.externalapi.checkup.CheckupRequest2;
 import com.scottapps.petshop.commons.service.externalapi.checkup.CheckupService;
-import com.scottapps.petshop.fish.model.FishRequestDto;
+import com.scottapps.petshop.externalapi.checkup.CheckupRequest;
+import com.scottapps.petshop.fish.model.FishCommand;
+import com.scottapps.petshop.fish.model.FishRequest;
+import com.scottapps.petshop.fish.model.FishResponse;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.core.Response;
 
 @ApplicationScoped
 public class FishOrchestrationService {
@@ -17,14 +18,9 @@ public class FishOrchestrationService {
     @Inject
     private CheckupService checkupService;
 
-    /**
-     * Add @Fallback.
-     *
-     * @param request
-     * @return
-     */
-    public Response orchestrate(FishRequestDto request) {
-        var res = checkupService.call(new CheckupRequest2());
-        return Response.ok(res).build();
+    public FishResponse orchestrate(FishCommand command) {
+        var request = new FishRequest();
+        var checkupResponse = checkupService.call(new CheckupRequest());
+        return new FishResponse(200);
     }
 }
