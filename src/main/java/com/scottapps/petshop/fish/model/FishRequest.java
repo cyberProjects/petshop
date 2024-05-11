@@ -1,10 +1,8 @@
-package com.scottapps.petshop.fish;
+package com.scottapps.petshop.fish.model;
 
-import javax.enterprise.context.RequestScoped;
 import java.util.UUID;
 
-@RequestScoped
-public class FishContext {
+public class FishRequest {
     private final String id = UUID.randomUUID().toString();
     private FishRequest request;
     private FishResponse response;
@@ -17,23 +15,21 @@ public class FishContext {
         return request;
     }
 
-    public FishContext setRequest(FishRequest request) {
+    public void setRequest(FishRequest request) {
         this.request = request;
-        return this;
     }
 
     public FishResponse getResponse() {
         return response;
     }
 
-    public FishContext setResponse(FishResponse response) {
+    public void setResponse(FishResponse response) {
         this.response = response;
-        return this;
     }
 
     @Override
     public String toString() {
-        return "FishContext{" +
+        return "FishRequest{" +
                 "id='" + id + '\'' +
                 ", request=" + request +
                 ", response=" + response +

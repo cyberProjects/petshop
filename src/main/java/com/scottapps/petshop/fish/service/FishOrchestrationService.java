@@ -1,7 +1,8 @@
-package com.scottapps.petshop.fish;
+package com.scottapps.petshop.fish.service;
 
 import com.scottapps.petshop.externalapi.checkup.CheckupRequest2;
 import com.scottapps.petshop.commons.service.externalapi.checkup.CheckupService;
+import com.scottapps.petshop.fish.model.FishRequestDto;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;

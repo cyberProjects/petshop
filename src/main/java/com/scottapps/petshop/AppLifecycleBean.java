@@ -1,7 +1,7 @@
 package com.scottapps.petshop;
 
-import com.scottapps.petshop.fish.FishOrchestrationService;
-import com.scottapps.petshop.fish.FishRequestDto;
+import com.scottapps.petshop.fish.service.FishOrchestrationService;
+import com.scottapps.petshop.fish.model.FishRequestDto;
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
 

@@ -1,4 +1,4 @@
-package com.scottapps.petshop.fish;
+package com.scottapps.petshop.fish.model;
 
 public class FishResponse {
     private String id = "";

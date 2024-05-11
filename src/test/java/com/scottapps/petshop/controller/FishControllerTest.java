@@ -1,6 +1,6 @@
 package com.scottapps.petshop.controller;
 
-import com.scottapps.petshop.fish.FishRequestDto;
+import com.scottapps.petshop.fish.model.FishRequestDto;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,7 @@
-package com.scottapps.petshop.fish;
+package com.scottapps.petshop.fish.controller;
 
+import com.scottapps.petshop.fish.model.FishRequestDto;
+import com.scottapps.petshop.fish.service.FishOrchestrationService;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.jboss.logging.Logger;
 

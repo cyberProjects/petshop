@@ -1,4 +1,4 @@
-package com.scottapps.petshop.fish;
+package com.scottapps.petshop.fish.model;
 
 import javax.validation.constraints.NotNull;
 

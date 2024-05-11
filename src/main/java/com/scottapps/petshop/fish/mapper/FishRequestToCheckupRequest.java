@@ -1,6 +1,7 @@
-package com.scottapps.petshop.fish;
+package com.scottapps.petshop.fish.mapper;
 
-import com.scottapps.petshop.externalapi.checkup.CheckupRequest2;
+import com.scottapps.petshop.externalapi.checkup.CheckupRequest;
+import com.scottapps.petshop.fish.model.FishContext;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.jboss.logging.Logger;
 
@@ -9,17 +10,16 @@ import javax.inject.Inject;
 import java.util.Optional;
 
 @ApplicationScoped
-public class FishRequestToCheckupRequest2 {
+public class FishRequestToCheckupRequest {
     @Inject
     Logger log;
 
     @Fallback(fallbackMethod = "fallback")
-    public Optional<CheckupRequest2> toCheckupRequest2(FishContext fishRequest) {
-        throw new NullPointerException();
-        //        return Optional.of(new CheckupRequest2());
+    public Optional<CheckupRequest> toCheckupRequest(FishContext fishRequest) {
+        return Optional.of(new CheckupRequest());
     }
 
-    private Optional<CheckupRequest2> fallback(FishContext fishContext) {
+    private Optional<CheckupRequest> fallback(FishContext fishContext) {
         log.error("Exception thrown while creating a FishRequest. Returning empty Optional.");
         return Optional.empty();
     }
