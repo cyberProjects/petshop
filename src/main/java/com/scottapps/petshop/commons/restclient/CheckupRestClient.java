@@ -1,10 +1,8 @@
 package com.scottapps.petshop.commons.restclient;
 
 import com.scottapps.petshop.externalapi.checkup.CheckupRequest;
-import com.scottapps.petshop.externalapi.checkup.CheckupRequest2;
 import com.scottapps.petshop.externalapi.checkup.CheckupResponse;
 import com.scottapps.petshop.commons.exception.ExternalApiExceptionMapper;
-import org.eclipse.microprofile.faulttolerance.Bulkhead;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
@@ -25,12 +23,5 @@ public interface CheckupRestClient {
     @Retry(maxRetries = 3)
     @Timeout(6000)
     CheckupResponse getCheckup(CheckupRequest request);
-
-    @POST
-    @Path("/mock/checkup")
-    @Retry(maxRetries = 3)
-    @Timeout(6000)
-    @Bulkhead(1)
-    CheckupResponse getCheckup(CheckupRequest2 request);
 }
 
