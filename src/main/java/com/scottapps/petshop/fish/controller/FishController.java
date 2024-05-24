@@ -8,6 +8,7 @@ import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -23,15 +24,24 @@ public class FishController {
     @Inject
     private FishOrchestrationService service;
 
-    @POST
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Fallback(fallbackMethod = "defaultFallback")
-    public Response post(@Valid FishRequestDto requestDto) {
+    public Response get() {
         log.info("Received new FishRequestDto!");
-        var command = new FishCommand(UUID.randomUUID().toString(), requestDto);
+        var command = new FishCommand(UUID.randomUUID().toString(), new FishRequestDto());
         var response = service.orchestrate(command);
         return Response.status(response.getStatusCode()).entity(response).build();
     }
+
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Fallback(fallbackMethod = "defaultFallback")
+//    public Response post(@Valid FishRequestDto requestDto) {
+//        log.info("Received new FishRequestDto!");
+//        var command = new FishCommand(UUID.randomUUID().toString(), requestDto);
+//        var response = service.orchestrate(command);
+//        return Response.status(response.getStatusCode()).entity(response).build();
+//    }
 
     public Response defaultFallback(FishRequestDto request) {
         log.error("Complete failure while processing the request!");

@@ -5,7 +5,7 @@ import java.util.Date;
 public class ExternalApiException extends RuntimeException {
     private final String CUSTOM_MESSAGE_DEFAULT = "Default external api exception message.";
     private Date date;
-    private Object entity;
+    private String entity;
     private int status;
     private String customMsg;
 
@@ -13,14 +13,14 @@ public class ExternalApiException extends RuntimeException {
         this.customMsg = customMsg;
     }
 
-    public ExternalApiException(Date date, Object entity, int status) {
+    public ExternalApiException(Date date, String entity, int status) {
         this.date = date;
         this.entity = entity;
         this.status = status;
         this.customMsg = CUSTOM_MESSAGE_DEFAULT;
     }
 
-    public ExternalApiException(Date date, Object entity, int status, String customMsg) {
+    public ExternalApiException(Date date, String entity, int status, String customMsg) {
         this.date = date;
         this.entity = entity;
         this.status = status;
@@ -35,11 +35,11 @@ public class ExternalApiException extends RuntimeException {
         this.date = date;
     }
 
-    public Object getEntity() {
+    public String getEntity() {
         return entity;
     }
 
-    public void setEntity(Object entity) {
+    public void setEntity(String entity) {
         this.entity = entity;
     }
 
@@ -61,11 +61,12 @@ public class ExternalApiException extends RuntimeException {
 
     @Override
     public String toString() {
-        return "CheckupServiceException{" +
-                "date=" + date +
+        return "ExternalApiException{" +
+                "CUSTOM_MESSAGE_DEFAULT='" + CUSTOM_MESSAGE_DEFAULT + '\'' +
+                ", date=" + date +
                 ", entity=" + entity +
                 ", status=" + status +
                 ", customMsg='" + customMsg + '\'' +
-                '}';
+                "} " + super.toString();
     }
 }

@@ -1,10 +1,9 @@
 package com.scottapps.petshop.fish.service;
 
-import com.scottapps.petshop.commons.service.externalapi.checkup.CheckupService;
-import com.scottapps.petshop.externalapi.checkup.CheckupRequest;
 import com.scottapps.petshop.fish.model.FishCommand;
 import com.scottapps.petshop.fish.model.FishRequest;
 import com.scottapps.petshop.fish.model.FishResponse;
+import com.scottapps.petshop.fish.service.externalapi.checkup.FishCheckupService;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,11 +15,22 @@ public class FishOrchestrationService {
     Logger log;
 
     @Inject
-    private CheckupService checkupService;
+    private FishCheckupService fishCheckupService;
 
     public FishResponse orchestrate(FishCommand command) {
-        var request = new FishRequest();
-        var checkupResponse = checkupService.call(new CheckupRequest());
-        return new FishResponse(200);
+        try {
+            // Take the boundary object and map to the internal domain object.
+            var request = new FishRequest();
+            // Start calling services as needed.
+            var checkupServiceResponse = fishCheckupService.callCheckupService(request);
+            log.info(checkupServiceResponse);
+            // Save the service response somewhere...
+            // ...
+            // Return the response object.
+            return new FishResponse(200);
+        } catch (RuntimeException e) {
+            // This is a fault boundary (as opposed to a contingency boundary).
+            return new FishResponse(500);
+        }
     }
 }

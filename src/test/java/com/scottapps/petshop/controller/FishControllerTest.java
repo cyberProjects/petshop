@@ -1,13 +1,14 @@
 package com.scottapps.petshop.controller;
 
 import com.scottapps.petshop.fish.model.FishRequestDto;
+import io.quarkus.test.junit.QuarkusIntegrationTest;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 
-@QuarkusTest
+@QuarkusIntegrationTest
 public class FishControllerTest {
     @Test
     public void testPost() {
@@ -18,7 +19,5 @@ public class FishControllerTest {
                 .post("/fish")
                 .then()
                 .statusCode(200);
-//                .and()
-//                .body("request.message", is("Works!"));
     }
 }

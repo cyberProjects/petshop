@@ -12,7 +12,7 @@ public class ExternalApiExceptionMapper implements ResponseExceptionMapper<Exter
 
     @Override
     public ExternalApiException toThrowable(Response response) {
-        log.errorv("Mapping ExternalApiException: {0}", response.toString());
-        return new ExternalApiException(response.getDate(), response.getEntity(), response.getStatus());
+        log.errorv("Mapping Response to ExternalApiException.");
+        return new ExternalApiException(response.getDate(), response.readEntity(String.class), response.getStatus());
     }
 }
