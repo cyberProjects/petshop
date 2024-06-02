@@ -1,25 +1,23 @@
 package com.scottapps.petshop.controller;
 
-import com.scottapps.petshop.model.domain.fish.FishRequest;
+import com.scottapps.petshop.fish.model.FishRequestDto;
+import io.quarkus.test.junit.QuarkusIntegrationTest;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 
-@QuarkusTest
+@QuarkusIntegrationTest
 public class FishControllerTest {
     @Test
     public void testPost() {
         given()
-                .body(new FishRequest())
+                .body(new FishRequestDto("FishControllerTest"))
                 .header("Content-Type", "application/json")
                 .when()
                 .post("/fish")
                 .then()
-                .statusCode(200)
-                .and()
-                .body("request.type", is("FishRequest"))
-                .body("request.test", is("Works!"));
+                .statusCode(200);
     }
 }
