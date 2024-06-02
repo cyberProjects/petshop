@@ -30,7 +30,7 @@ public class FishCheckupService {
             var checkupResponse = checkupService.call(checkupRequest);
             serviceResponse.setResponse(checkupResponse);
         } catch (ExternalApiException | TimeoutException e) {
-            log.error("Exception thrown while calling Checkup api.");
+            log.errorv("Exception thrown while calling Checkup api. Cause: {0}");
             serviceResponse.setThrowable(e);
         }
         return serviceResponse;
