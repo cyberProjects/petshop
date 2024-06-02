@@ -26,12 +26,20 @@ public class MockControllers {
         return Response.ok(new CheckupResponse()).build();
     }
 
+//    @POST
+//    @Path("/checkuperror")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response postError(CheckupRequest request) throws InterruptedException {
+//        log.info("Mock Checkup API Called! Sending Error!");
+////        Thread.sleep(7000);
+//        return Response.serverError().entity("Error entity.").build();
+//    }
+
     @POST
     @Path("/checkuperror")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postError(CheckupRequest request) throws InterruptedException {
+    public Response postError(CheckupRequest request) {
         log.info("Mock Checkup API Called! Sending Error!");
-//        Thread.sleep(7000);
-        return Response.serverError().entity("Error entity.").build();
+        return Response.serverError().build();
     }
 }

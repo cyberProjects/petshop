@@ -4,7 +4,7 @@ import com.scottapps.petshop.externalapi.checkup.CheckupRequest;
 import com.scottapps.petshop.externalapi.checkup.CheckupResponse;
 
 public class CheckupServiceResponse {
-    private final String id = "CheckupServiceResponse";
+    private final String id = "Checkup Service API";
     private CheckupRequest request;
     private CheckupResponse response;
     private Throwable throwable;
